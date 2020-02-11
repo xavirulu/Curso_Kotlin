@@ -1,0 +1,41 @@
+type: edu
+custom_name: Copy constructor
+files:
+- name: src/Task.kt
+  visible: true
+  placeholders:
+  - offset: 102
+    length: 6
+    placeholder_text: TODO()
+    initial_state:
+      length: 6
+      offset: 102
+    initialized_from_dependency: false
+    possible_answer: return this.copy(name = newName)
+    selected: false
+    status: Unchecked
+  text: |+
+    data class Person(val name: String, val age: Int) {
+        fun rename(newName: String): Person {
+            TODO()
+        }
+    }
+
+  learner_created: false
+- name: test/tests.kt
+  visible: false
+  text: |
+    import org.junit.Assert
+    import org.junit.Test
+
+    class TestCopyConstructor {
+        @Test(timeout = 1000)
+        fun testListOfPeople() {
+            Assert.assertEquals("The rename did not work",
+                    "Person(name=Alice In Wonderland, age=29)",
+                    Person("Alice", 29).rename("Alice In Wonderland").toString())
+        }
+    }
+  learner_created: false
+status: Unchecked
+record: -1

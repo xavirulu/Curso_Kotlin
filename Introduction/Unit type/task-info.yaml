@@ -1,0 +1,33 @@
+type: edu
+custom_name: Unit type
+files:
+- name: src/Task.kt
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 150
+    placeholder_text: |-
+      fun main(){
+        println("Congrats! Next year you'll be $age")
+      }
+    initial_state:
+      length: 61
+      offset: 0
+    initialized_from_dependency: false
+    possible_answer: |-
+      fun congratulate(age: Int): Unit {
+          println("Congrats! Next year you'll be $age.")
+      }
+
+      fun main() {
+          congratulate(10)
+      }
+    selected: true
+    status: Unchecked
+  text: |
+    fun main(){
+      println("Congrats! Next year you'll be $age")
+    }
+  learner_created: false
+status: Unchecked
+record: -1

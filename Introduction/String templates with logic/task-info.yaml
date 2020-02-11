@@ -1,0 +1,41 @@
+type: edu
+custom_name: String templates with logic
+files:
+- name: src/Task.kt
+  visible: true
+  placeholders:
+  - offset: 42
+    length: 6
+    placeholder_text: TODO()
+    initial_state:
+      length: 6
+      offset: 42
+    initialized_from_dependency: false
+    possible_answer: '"""$amount ${if (amount == 1) "unit" else "units"}"""'
+    selected: false
+    status: Unchecked
+  text: |2
+
+    fun describeUnits(amount: Int): String = TODO()
+  learner_created: false
+- name: test/Tests.kt
+  visible: false
+  text: |
+    import org.junit.Test
+    import org.junit.Assert
+
+    class Test {
+        @Test(timeout = 1000)
+        fun `check description when plural`() {
+            Assert.assertEquals("Should be plural", describeUnits(0), "0 units")
+            Assert.assertEquals("Should be plural", describeUnits(2), "2 units")
+        }
+
+        @Test(timeout = 1000)
+        fun `check description when singular`() {
+            Assert.assertEquals("Should be singular", describeUnits(1), "1 unit")
+        }
+    }
+  learner_created: false
+status: Unchecked
+record: -1

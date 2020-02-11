@@ -1,0 +1,53 @@
+type: edu
+files:
+- name: src/Task.kt
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 6
+    placeholder_text: TODO()
+    initial_state:
+      length: 6
+      offset: 0
+    initialized_from_dependency: false
+    possible_answer: |-
+      fun <INPUT : OUTPUT, OUTPUT> myReduce(input: List<INPUT>, mapper: (OUTPUT, INPUT) -> OUTPUT): OUTPUT {
+          val iterator = input.iterator()
+          if (!iterator.hasNext()) throw UnsupportedOperationException("Empty collection can't be reduced.")
+          var accumulator: OUTPUT = iterator.next()
+          while (iterator.hasNext()) {
+              accumulator = mapper(accumulator, iterator.next())
+
+          }
+          return accumulator
+      }
+    selected: false
+    status: Unchecked
+  text: |
+    TODO()
+  learner_created: false
+- name: test/Tests.kt
+  visible: false
+  text: |
+    import org.junit.Assert.assertEquals
+    import org.junit.Test
+
+    class Test {
+        @Test
+        fun `sum`() {
+            assertReduce(listOf(1, 2, 3), Int::plus, 6)
+        }
+
+        @Test
+        fun `subtract`() {
+            assertReduce(listOf(1, 2, 3), Int::minus, -4)
+        }
+
+        fun <INPUT : OUTPUT, OUTPUT> assertReduce(input: List<INPUT>, mapper: (OUTPUT, INPUT) -> OUTPUT, expected: OUTPUT) {
+            assertEquals(expected, myReduce(input, mapper))
+            assertEquals(input.reduce(mapper), myReduce(input, mapper))
+        }
+    }
+  learner_created: false
+status: Unchecked
+record: -1

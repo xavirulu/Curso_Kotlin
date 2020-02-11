@@ -1,0 +1,77 @@
+type: edu
+files:
+- name: src/Task.kt
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 6
+    placeholder_text: TODO()
+    initial_state:
+      length: 6
+      offset: 0
+    initialized_from_dependency: false
+    possible_answer: |-
+      fun <K, R> myMap(listOf: List<K>, mapper: (K) -> R): List<R> {
+          val result = mutableListOf<R>()
+          for (current in listOf) {
+              result.add(mapper(current))
+          }
+          return result.toList()
+      }
+    selected: false
+    status: Unchecked
+  text: |
+    TODO()
+
+    data class IntegerWrapper(val int: Int) {
+        fun increment(): IntegerWrapper {
+            return this.copy(int = int + 1)
+        }
+    }
+  learner_created: false
+- name: test/Tests.kt
+  visible: false
+  text: |
+    import org.junit.Assert.assertEquals
+    import org.junit.Test
+
+    class Test {
+        @Test
+        fun `test map on Integers`() {
+            val f = { it: Int -> it + 1 }
+
+            val input = listOf(1, 2, 3)
+            val expected = listOf(2, 3, 4)
+
+            assertMap(input, f, expected)
+        }
+
+        @Test
+        fun `test map on Doubles`() {
+            val f = { it: Double -> it + 1 }
+
+            val input = listOf(1.0, 2.0, 3.0)
+            val expected = listOf(2.0, 3.0, 4.0)
+
+            assertMap(input, f, expected)
+        }
+
+        @Test
+        fun `test map on any Class`() {
+            val f = IntegerWrapper::increment
+
+            val input = listOf(IntegerWrapper(1), IntegerWrapper(3), IntegerWrapper(5))
+            val expected = input.map(f)
+
+            assertMap(input, f, expected)
+        }
+
+        private fun <INPUT, OUTPUT> assertMap(input: List<INPUT>, f: (INPUT) -> OUTPUT, expected: List<INPUT>) {
+            assertEquals("Failure on 'map' function", expected, myMap(input, f))
+            assertEquals("Failure on 'map' function", input.map(f), myMap(input, f))
+        }
+
+    }
+  learner_created: false
+status: Unchecked
+record: -1
